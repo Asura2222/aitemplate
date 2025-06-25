@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "db": "supabase start",
+    "db:test": "PGOPTIONS='--client-min-messages=warning' supabase test db ",
+    "db:changed": "./scripts/db_changed.sh",
+    "db:push": "./scripts/db_deploy_prod.sh",
+    "//": "https://docs.stripe.com/stripe-cli#install",
+    "stripe": "stripe listen --forward-to http://localhost:5173/api/webhooks/stripe",
+    "stripe:trigger": "stripe trigger",
+    "init:env": "tsx scripts/init-secrets.ts",
+    "init:env:prod": "tsx scripts/init-secrets.ts --plugin cloudflare-prod",
+    "terraform:plan": "tsx scripts/deploy_terraform.ts --plan-only",
+    "terraform:deploy": "tsx scripts/deploy_terraform.ts",
+    "terraform:deploy:auto": "tsx scripts/deploy_terraform.ts --auto-approve",
+    "terraform:destroy": "tsx scripts/deploy_terraform.ts --destroy"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.830.0",
+    "@iarna/toml": "^2.2.5",
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.19.1",
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "glob": "^11.0.3",
+    "inquirer": "^8.2.6",
+    "jsonc-parser": "^3.3.1",
+    "supabase": "^2.26.9",
+    "tsx": "^4.0.0",
+    "typescript": "^5.3.3",
+    "wrangler": "^4.20.0",
+    "yargs": "^18.0.0"
+  },
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20250619.0"
+  }
+}

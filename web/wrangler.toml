@@ -1,0 +1,18 @@
+name = "fullstack-ai-web-template"
+pages_build_output_dir = ".svelte-kit/cloudflare"
+compatibility_date = "2025-06-04"
+compatibility_flags = ["nodejs_compat"]
+
+[[r2_buckets]]
+binding = "FILE_STORAGE"
+bucket_name = "fullstack-ai-web-template"
+
+[[durable_objects.bindings]]
+name = "RATE_LIMITER"
+class_name = "RateLimiter"
+script_name = "durable-objects"
+
+[vars]
+NODE_VERSION = "22.14.0" 
+APP_URL = "https://template.johnteasdale.com"
+
